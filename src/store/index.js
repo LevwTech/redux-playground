@@ -4,13 +4,29 @@ function reducer(
   action
 ) {
   if (action.type === "INCREMENT")
-    return { counter: state.counter + 1, toggle: state.toggle };
+    return {
+      counter: state.counter + 1,
+      toggle: state.toggle,
+      isLogged: state.isLogged,
+    };
   if (action.type === "DECREMENT")
-    return { counter: state.counter - 1, toggle: state.toggle };
+    return {
+      counter: state.counter - 1,
+      toggle: state.toggle,
+      isLogged: state.isLogged,
+    };
   if (action.type === "INCREASEBY")
-    return { counter: state.counter + action.val, toggle: state.toggle };
+    return {
+      counter: state.counter + action.val,
+      toggle: state.toggle,
+      isLogged: state.isLogged,
+    };
   if (action.type === "TOGGLE")
-    return { counter: state.counter, toggle: !state.toggle };
+    return {
+      counter: state.counter,
+      toggle: !state.toggle,
+      isLogged: state.isLogged,
+    };
   if (action.type === "LOGIN")
     return { isLogged: true, counter: state.counter, toggle: state.toggle };
   if (action.type === "LOGOUT")

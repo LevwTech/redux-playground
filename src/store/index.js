@@ -1,37 +1,35 @@
 import { createStore } from "redux";
-function reducer(
-  state = { counter: 0, toggle: true, isLogged: false },
-  action
-) {
-  if (action.type === "INCREMENT")
-    return {
-      counter: state.counter + 1,
-      toggle: state.toggle,
-      isLogged: state.isLogged,
-    };
-  if (action.type === "DECREMENT")
-    return {
-      counter: state.counter - 1,
-      toggle: state.toggle,
-      isLogged: state.isLogged,
-    };
-  if (action.type === "INCREASEBY")
-    return {
-      counter: state.counter + action.val,
-      toggle: state.toggle,
-      isLogged: state.isLogged,
-    };
-  if (action.type === "TOGGLE")
-    return {
-      counter: state.counter,
-      toggle: !state.toggle,
-      isLogged: state.isLogged,
-    };
-  if (action.type === "LOGIN")
-    return { isLogged: true, counter: state.counter, toggle: state.toggle };
-  if (action.type === "LOGOUT")
-    return { isLogged: false, counter: state.counter, toggle: state.toggle };
-  else return state;
+const initialState = { counter: 0, toggle: true, isLogged: false };
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case "INCREMENT":
+      return {
+        ...state,
+        counter: state.counter + 1,
+      };
+    case "DECREMENT":
+      return {
+        ...state,
+        counter: state.counter - 1,
+      };
+    case "INCREASEBY":
+      return {
+        ...state,
+        counter: state.counter + action.val,
+      };
+    case "TOGGLE":
+      return {
+        ...state,
+        toggle: !state.toggle,
+      };
+    case "LOGIN":
+      return { ...state, isLogged: true };
+    case "LOGOUT":
+      return { ...state, isLogged: false };
+    default:
+      return state;
+  }
 }
 const store = createStore(reducer);
 export default store;
